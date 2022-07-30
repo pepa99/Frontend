@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Categorize transaction</h1>
+<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<div mat-dialog-actions>
+    <mat-form-field appearance="fill">
+        <mat-label>Select me</mat-label>
+        <mat-select #select>
+          <mat-option value="A">Misc Expenses</mat-option>
+          <mat-option value="B">Auto & Transport</mat-option>
+          <mat-option value="C">Bills & Utilities</mat-option>
+
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>  
+  <button mat-button mat-dialog-close (click)="categorize(select.value)">Categorize</button>
+</div>

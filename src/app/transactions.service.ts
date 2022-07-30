@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,7 +11,23 @@ export class TransactionsService {
   ) { }
   public getTransactions(kind:string)
   {
-     return this.http.get("https://localhost:7087/transactions?kind_str=pmt&starts=8/24/2021&ends=8/26/2021&page=1&pagesize=10&sortby=id&sortorder=Asc");
+     return this.http.get("https://localhost:7087/transactions?kind_str=+"+kind+"&starts=1/1/1900&ends=1/1/2023&page=1&pagesize=10&sortby=date&sortorder=Asc");
 
+  }
+  public categorizeTransaction(id:string,code:string)
+  {
+    //code="100";
+    console.log(code);
+    const body=JSON.stringify(code);
+
+    return this.http.post<any>("https://localhost:7087/transactions/"+id+"/categorize",body,
+    {
+      headers : new HttpHeaders(
+        {
+          "Content-Type": "application/json"
+        }
+        )
+    }
+    );
   }
 }
