@@ -9,9 +9,9 @@ export class TransactionsService {
   constructor(
     protected http:HttpClient
   ) { }
-  public getTransactions(kind:string)
+  public getTransactions(kind:string, page:string)
   {
-     return this.http.get("https://localhost:7087/transactions?kind_str=+"+kind+"&starts=1/1/1900&ends=1/1/2023&page=1&pagesize=10&sortby=date&sortorder=Asc");
+     return this.http.get("https://localhost:7087/transactions?kind_str="+kind+"&starts=1/1/1900&ends=1/1/2023&page="+page+"&pagesize=10&sortby=date&sortorder=Desc");
 
   }
   public categorizeTransaction(id:string,code:string)

@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TransactionDialogComponent } from './transaction-dialog/transaction-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -38,7 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatIconModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

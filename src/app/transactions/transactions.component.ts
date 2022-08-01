@@ -11,7 +11,7 @@ import { TransactionsService } from '../transactions.service';
 })
 export class TransactionsComponent implements OnInit {
   public transactions: any=[];
-  public displayedColumns: string[]=["id", "beneficiaryname", "date","description","directions","amount","currency","transactionKind","mcc","catcode","categorize"];
+  public displayedColumns: string[]=["id", "beneficiaryname", "date","description","directions","amount","currency","transactionKind","catcode","categorize"];
   public dataSource =new MatTableDataSource();
   constructor(
     protected service:TransactionsService,
@@ -19,23 +19,22 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
   }
-  public getTransactions(kind:string)
+  public getTransactions(kind:string, page:string)
   {
-    this.service.getTransactions(kind).subscribe((res)=>{
+    this.service.getTransactions(kind,page).subscribe((res)=>{
     this.transactions=res;
     this.dataSource.data=this.transactions.items;
     console.log(kind);
     });
   }
-  public categorizeTransaction(id:string)
+  public categorizeTransaction(id:string,element:any)
   {
     const dialogRef = this.dialog.open(TransactionDialogComponent, {
-      width: '250px',
+      width: '350px',
     });
     dialogRef.afterClosed().subscribe(result => {
-
+    element.catcode=result;  
     this.service.categorizeTransaction(id,result).subscribe((res)=>{
       console.log(res);
       });
